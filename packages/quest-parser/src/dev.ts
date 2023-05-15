@@ -1,5 +1,6 @@
-import { lstat, readFile, readdir } from "fs/promises";
+import { lstat, mkdir, readFile, readdir } from "fs/promises";
 import snbtToJS from "./quest-parser.js";
+import { writeFileSync } from "fs";
 
 parseDirectory("../../../Create-Astral/config/ftbquests/")
 
@@ -10,10 +11,18 @@ async function parseDirectory(baseDir: string) {
             await parseDirectory(baseDir + file + "/");
         } else {
             console.log(file);
-            let pathI: number = -1;
-            console.log(await snbtToJS(String(await readFile(baseDir + file)), baseDir.split("/").filter((dir, i, arr) => {
+            const filename = baseDir.split("/").filter((dir, i, arr) => {
                 return (arr.slice(0, i).find(val => val === "Create-Astral"))
-            }).join("/") + file));
+            }).join("/") + file;
+            const result = snbtToJS(String(await readFile(baseDir + file)), filename)
+
+            const writeString = "./generated_json/" + filename + ".json";
+
+            await mkdir(writeString.split("/").slice(0, -1).join("/"), {
+                recursive: true
+            });
+
+            writeFileSync(writeString, JSON.stringify(result));
         }
     }
 }
