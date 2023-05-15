@@ -22,7 +22,7 @@
   "scripts": {
     "build": "tsc",
     "test": "node ./__tests__/quest-parser.test.js",
-    "dev": "nodemon src/dev.ts"
+    "dev": "nodemon src/dev.ts --ignore generated_json/"
   },
   "devDependencies": {
     "nodemon": "^2.0.22",
