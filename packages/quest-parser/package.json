@@ -7,6 +7,7 @@
     "snbt",
     "typescript"
   ],
+  "type": "module",
   "author": "Jan Bayer <enderjanyt@gmail.com>",
   "homepage": "",
   "license": "MIT",
@@ -19,7 +20,12 @@
     "lib"
   ],
   "scripts": {
-    "tsc": "tsc",
-    "test": "node ./__tests__/quest-parser.test.js"
+    "build": "tsc",
+    "test": "node ./__tests__/quest-parser.test.js",
+    "dev": "nodemon src/dev.ts"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1"
   }
 }
