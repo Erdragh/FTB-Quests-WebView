@@ -12,7 +12,10 @@ async function parseDirectory(baseDir: string) {
             await parseDirectory(baseDir + file + "/");
         } else {
             console.log(file);
-            console.log(snbtToJS(String(await readFile(baseDir + file)), file));
+            let pathI: number = -1;
+            console.log(await snbtToJS(String(await readFile(baseDir + file)), baseDir.split("/").filter((dir, i, arr) => {
+                return (arr.slice(0, i).find(val => val === "Create-Astral"))
+            }).join("/") + file));
         }
     }
 }
