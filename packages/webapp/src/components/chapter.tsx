@@ -18,7 +18,7 @@ const Chapter: React.FC<FTBQuestChapter> = (props) => {
   return (
     <div className={styles.chapter} style={{"--ftb-size": size, "--ftb-top-left-x": topLeft[0], "--ftb-top-left-y": topLeft[1]} as any}>
       {props.quests.map((quest) => (
-        <Quest key={quest.id} {...quest} />
+        <Quest key={quest.id} allQuests={props.quests} {...quest} />
       ))}
     </div>
   );

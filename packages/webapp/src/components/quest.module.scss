@@ -1,19 +1,43 @@
 .quest {
     position: absolute;
-    --top-left-x: calc(var(--ftb-top-left-x) * var(--ftb-size) * (-100px));
-    --top-left-y: calc(var(--ftb-top-left-y) * var(--ftb-size) * (-100px));
+    --top-left-x: calc(var(--ftb-top-left-x) * var(--ftb-size) * (-100px) + 100px);
+    --top-left-y: calc(var(--ftb-top-left-y) * var(--ftb-size) * (-100px) + 100px);
     --pos-x: calc(var(--ftb-pos-x) * var(--ftb-size) * (-100px));
     --pos-y: calc(var(--ftb-pos-y) * var(--ftb-size) * (-100px));
-    top: calc(var(--top-left-x) - var(--pos-x));
-    left: calc(var(--top-left-y) - var(--pos-y));
+    --width: calc(20px * var(--ftb-quest-size));
+    --height: calc(20px * var(--ftb-quest-size));
+    top: calc(var(--top-left-y) - var(--pos-y) - 0.5 * var(--height));
+    left: calc(var(--top-left-x) - var(--pos-x) - 0.5 * var(--width));
 }
 
 .icon {
-    width: calc(20px * var(--ftb-quest-size));
-    height: calc(20px * var(--ftb-quest-size));
+    width: var(--width);
+    height: var(--height);
     margin: 20px;
     background-color: black;
+    appearance: none;
+    border: 1px solid rgb(40,40,40);
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(20,20,20);
+    }
     &.circle {
         border-radius: 50%;
     }
+}
+
+.dependencyLine {
+    height: 2px;
+    min-width: 10px;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    --dist: calc(var(--distance) * var(--ftb-size) * (100px));
+    
+    width: var(--dist);
+    transform-origin:  top left;
+    transform: rotateZ(calc(var(--angle) * (360 / (2 * var(--pi))) * 1deg))
+
 }
