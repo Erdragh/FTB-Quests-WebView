@@ -1,0 +1,19 @@
+.quest {
+    position: absolute;
+    --top-left-x: calc(var(--ftb-top-left-x) * var(--ftb-size) * (-100px));
+    --top-left-y: calc(var(--ftb-top-left-y) * var(--ftb-size) * (-100px));
+    --pos-x: calc(var(--ftb-pos-x) * var(--ftb-size) * (-100px));
+    --pos-y: calc(var(--ftb-pos-y) * var(--ftb-size) * (-100px));
+    top: calc(var(--top-left-x) - var(--pos-x));
+    left: calc(var(--top-left-y) - var(--pos-y));
+}
+
+.icon {
+    width: calc(20px * var(--ftb-quest-size));
+    height: calc(20px * var(--ftb-quest-size));
+    margin: 20px;
+    background-color: black;
+    &.circle {
+        border-radius: 50%;
+    }
+}

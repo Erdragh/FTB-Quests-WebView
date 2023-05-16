@@ -11,13 +11,15 @@
   "author": "Jan Bayer <enderjanyt@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "lib/quest-parser.js",
+  "main": "src/quest-parser.ts",
   "directories": {
     "lib": "lib",
-    "test": "__tests__"
+    "test": "__tests__",
+    "src": "src"
   },
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "scripts": {
     "build": "tsc",
