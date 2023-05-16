@@ -1,43 +1,79 @@
 .quest {
-    position: absolute;
-    --top-left-x: calc(var(--ftb-top-left-x) * var(--ftb-size) * (-100px) + 100px);
-    --top-left-y: calc(var(--ftb-top-left-y) * var(--ftb-size) * (-100px) + 100px);
-    --pos-x: calc(var(--ftb-pos-x) * var(--ftb-size) * (-100px));
-    --pos-y: calc(var(--ftb-pos-y) * var(--ftb-size) * (-100px));
-    --width: calc(20px * var(--ftb-quest-size));
-    --height: calc(20px * var(--ftb-quest-size));
-    top: calc(var(--top-left-y) - var(--pos-y) - 0.5 * var(--height));
-    left: calc(var(--top-left-x) - var(--pos-x) - 0.5 * var(--width));
+  --unit-base-size: 40px;
+  position: absolute;
+  --top-left-x: calc(
+    var(--ftb-top-left-x) * var(--ftb-size) * (-100px) + 100px
+  );
+  --top-left-y: calc(
+    var(--ftb-top-left-y) * var(--ftb-size) * (-100px) + 100px
+  );
+  --pos-x: calc(var(--ftb-pos-x) * var(--ftb-size) * (-100px));
+  --pos-y: calc(var(--ftb-pos-y) * var(--ftb-size) * (-100px));
+  --width: calc(var(--unit-base-size) * var(--ftb-quest-size));
+  --height: calc(var(--unit-base-size) * var(--ftb-quest-size));
+  top: calc(var(--top-left-y) - var(--pos-y) - 0.5 * var(--height));
+  left: calc(var(--top-left-x) - var(--pos-x) - 0.5 * var(--width));
 }
 
 .icon {
-    width: var(--width);
-    height: var(--height);
-    margin: 20px;
-    background-color: black;
-    appearance: none;
-    border: 1px solid rgb(40,40,40);
-    cursor: pointer;
-    &:hover {
-        background-color: rgb(20,20,20);
-    }
-    &.circle {
-        border-radius: 50%;
-    }
+  width: var(--width);
+  height: var(--height);
+  margin: var(--unit-base-size);
+  background-color: black;
+  appearance: none;
+  border: 2px solid rgb(131, 131, 131);
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(20, 20, 20);
+  }
+  &.circle {
+    border-radius: 50%;
+  }
+  position: relative;
+  z-index: 1;
 }
 
 .dependencyLine {
+  height: 4px;
+  min-width: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+
+  --dist: calc(var(--distance) * var(--ftb-size) * (100px));
+
+  width: var(--dist);
+  transform-origin: top left;
+  transform: rotateZ(calc(var(--angle) * (360 / (2 * var(--pi))) * 1deg));
+  box-shadow: 0 0 5px black;
+
+  &:before,
+  &:after {
+    content: "";
+    display: block;
     height: 2px;
-    min-width: 10px;
-    background-color: green;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    --dist: calc(var(--distance) * var(--ftb-size) * (100px));
-    
-    width: var(--dist);
-    transform-origin:  top left;
-    transform: rotateZ(calc(var(--angle) * (360 / (2 * var(--pi))) * 1deg))
-
+    width: 100%;
+    background-size: 10px;
+  }
+  $arrow-light: rgb(120, 120, 120);
+  $arrow-dark: rgb(80, 80, 80);
+  &:before {
+    background-image: linear-gradient(
+      45deg,
+      $arrow-dark 0%,
+      $arrow-dark 50%,
+      $arrow-light 50%,
+      $arrow-light 100%
+    );
+  }
+  &:after {
+    background-image: linear-gradient(
+      -45deg,
+      $arrow-light 0%,
+      $arrow-light 50%,
+      $arrow-dark 50%,
+      $arrow-dark 100%
+    );
+  }
 }
