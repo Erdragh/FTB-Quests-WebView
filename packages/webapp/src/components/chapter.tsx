@@ -17,6 +17,10 @@ const Chapter: React.FC<FTBQuestChapter> = (props) => {
   }, [props.quests, props.images])
   return (
     <div className={styles.chapter} style={{"--ftb-size": size, "--ftb-top-left-x": topLeft[0], "--ftb-top-left-y": topLeft[1]} as any}>
+      <div className={styles.scalingButtons}>
+        <button onClick={() => setSize(2 * size)}>+</button>
+        <button onClick={() => setSize(0.5 * size)}>-</button>
+      </div>
       {props.quests.map((quest) => (
         <Quest key={quest.id} allQuests={props.quests} {...quest} />
       ))}
