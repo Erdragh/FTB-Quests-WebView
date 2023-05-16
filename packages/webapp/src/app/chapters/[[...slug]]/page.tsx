@@ -1,9 +1,8 @@
-import styles from './page.module.css'
 import snbtToJS, { FTBQuestChapter } from '@ftbquests-web/quest-parser'
 import { readFile } from 'fs/promises'
 import Chapter from '@/components/chapter';
 import { cache } from 'react';
-import {notFound} from "next/navigation";
+import { notFound } from "next/navigation";
 
 const read = cache(async (filename: string[]) => {
   console.log("reading", process.env.CHAPTER_BASEDIR, filename);
@@ -22,7 +21,7 @@ export default async function Home({params}: {params: {slug: string[]}}) {
     notFound();
   }
   return (
-    <main className={styles.main}>
+    <main>
       {chapter && <Chapter {...chapter}/>}
     </main>
   )
