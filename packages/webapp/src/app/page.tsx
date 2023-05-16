@@ -6,7 +6,7 @@ import Quest from '@/components/quest';
 import Chapter from '@/components/chapter';
 
 export default async function Home() {
-  const chapter = snbtToJS(String(await readFile("../../../Create-Astral/config/ftbquests/quests/chapters/chapter_2.snbt")));
+  const chapter = snbtToJS(String(await readFile("../../../Create-Astral/config/ftbquests/quests/chapters/chapter_4.snbt")));
   return (
     <main className={styles.main}>
       <Chapter {...chapter}/>

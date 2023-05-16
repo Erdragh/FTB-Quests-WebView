@@ -1,16 +1,17 @@
 .quest {
-  --unit-base-size: 40px;
+  --quest-icon-scale: .75;
+  --unit-base-size: 60px;
   position: absolute;
   --top-left-x: calc(
-    var(--ftb-top-left-x) * var(--ftb-size) * (-100px) + 100px
+    var(--ftb-top-left-x) * var(--ftb-size) * (-1) * var(--unit-base-size) + 100px
   );
   --top-left-y: calc(
-    var(--ftb-top-left-y) * var(--ftb-size) * (-100px) + 100px
+    var(--ftb-top-left-y) * var(--ftb-size) * (-1) * var(--unit-base-size) + 100px
   );
-  --pos-x: calc(var(--ftb-pos-x) * var(--ftb-size) * (-100px));
-  --pos-y: calc(var(--ftb-pos-y) * var(--ftb-size) * (-100px));
-  --width: calc(var(--unit-base-size) * var(--ftb-quest-size));
-  --height: calc(var(--unit-base-size) * var(--ftb-quest-size));
+  --pos-x: calc(var(--ftb-pos-x) * var(--ftb-size) * (-1) * var(--unit-base-size));
+  --pos-y: calc(var(--ftb-pos-y) * var(--ftb-size) * (-1) * var(--unit-base-size));
+  --width: calc(var(--unit-base-size) * var(--ftb-quest-size) * var(--quest-icon-scale));
+  --height: calc(var(--unit-base-size) * var(--ftb-quest-size) * var(--quest-icon-scale));
   top: calc(var(--top-left-y) - var(--pos-y) - 0.5 * var(--height));
   left: calc(var(--top-left-x) - var(--pos-x) - 0.5 * var(--width));
 }
@@ -22,6 +23,7 @@
   background-color: black;
   appearance: none;
   border: 2px solid rgb(131, 131, 131);
+  box-shadow: 0 0 5px black;
   cursor: pointer;
   &:hover {
     background-color: rgb(20, 20, 20);
@@ -41,7 +43,7 @@
   left: 50%;
   z-index: 0;
 
-  --dist: calc(var(--distance) * var(--ftb-size) * (100px));
+  --dist: calc(var(--distance) * var(--ftb-size) * var(--unit-base-size));
 
   width: var(--dist);
   transform-origin: top left;
