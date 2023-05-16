@@ -9,7 +9,7 @@ const Chapter: React.FC<FTBQuestChapter> = (props) => {
   const [size, setSize] = useState(1.0);
   const topLeft: [number, number] = useMemo(() => {
     const found: [number, number] = [0, 0];
-    for (let placeable of [...props.quests, ...props.images]) {
+    for (let placeable of [...props.quests, ...(props.images ? props.images : [])]) {
       found[0] = placeable.x < found[0] ? placeable.x : found[0];
       found[1] = placeable.y < found[1] ? placeable.y : found[1];
     }

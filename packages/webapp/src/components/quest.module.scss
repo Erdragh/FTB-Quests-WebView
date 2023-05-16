@@ -1,21 +1,22 @@
 .quest {
   --quest-icon-scale: .75;
-  --unit-base-size: 60px;
+  --unit-base-size: calc(60px * var(--ftb-size));
   position: absolute;
   --top-left-x: calc(
-    var(--ftb-top-left-x) * var(--ftb-size) * (-1) * var(--unit-base-size) + 100px
+    var(--ftb-top-left-x) * (-1) * var(--unit-base-size) + 100px
   );
   --top-left-y: calc(
-    var(--ftb-top-left-y) * var(--ftb-size) * (-1) * var(--unit-base-size) + 100px
+    var(--ftb-top-left-y) * (-1) * var(--unit-base-size) + 100px
   );
-  --pos-x: calc(var(--ftb-pos-x) * var(--ftb-size) * (-1) * var(--unit-base-size));
-  --pos-y: calc(var(--ftb-pos-y) * var(--ftb-size) * (-1) * var(--unit-base-size));
+  --pos-x: calc(var(--ftb-pos-x) * (-1) * var(--unit-base-size));
+  --pos-y: calc(var(--ftb-pos-y) * (-1) * var(--unit-base-size));
   --width: calc(var(--unit-base-size) * var(--ftb-quest-size) * var(--quest-icon-scale));
   --height: calc(var(--unit-base-size) * var(--ftb-quest-size) * var(--quest-icon-scale));
   top: calc(var(--top-left-y) - var(--pos-y) - 0.5 * var(--height));
   left: calc(var(--top-left-x) - var(--pos-x) - 0.5 * var(--width));
   &.hidden {
-    display: none;
+    // display: none;
+    display: block;
   }
 }
 
@@ -46,7 +47,7 @@
   left: 50%;
   z-index: 0;
 
-  --dist: calc(var(--distance) * var(--ftb-size) * var(--unit-base-size));
+  --dist: calc(var(--distance) * var(--unit-base-size));
 
   width: var(--dist);
   transform-origin: top left;

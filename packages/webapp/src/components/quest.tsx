@@ -22,7 +22,7 @@ const Quest: React.FC<FTBQuest & { allQuests: FTBQuest[] }> = (props) => {
         )
         .filter((quest) => !!quest)
         .map((quest) => (
-          <DependencyLine from={props} to={quest as any} />
+          <DependencyLine key={quest?.id} from={props} to={quest as any} />
         ))}
     </div>
   );
