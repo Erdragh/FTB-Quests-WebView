@@ -6,7 +6,7 @@ const Quest: React.FC<FTBQuest & { allQuests: FTBQuest[] }> = (props) => {
   const shape: string = props.shape || "circle";
   return (
     <div
-      className={styles.quest}
+      className={`${styles.quest} ${props.hide ? styles.hidden : ""}`}
       style={
         {
           "--ftb-pos-x": props.x,
@@ -36,7 +36,7 @@ const DependencyLine: React.FC<{ from: FTBQuest; to: FTBQuest }> = ({
 }) => {
   return (
     <div
-      className={styles.dependencyLine}
+      className={`${styles.dependencyLine} ${from.hide_dependency_lines ? styles.hidden : ""}`}
       style={{
         "--angle": angle((to.x - from.x), (to.y - from.y)),
         "--pi": Math.PI,
